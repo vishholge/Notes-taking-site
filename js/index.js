@@ -15,7 +15,7 @@ addBtn.addEventListener("click", function(e) {
 //   console.log(notesObj);
   showNotes();
 });
-
+// function to show notes from local storage:
 function showNotes() {
     let notes = localStorage.getItem("notes");
     if (notes == null) {
@@ -38,6 +38,20 @@ function showNotes() {
     if (notesObj.length != 0) {
       notesElm.innerHTML = html;
     } else {
-      notesElm.innerHTML = `Nothing to show! Use "Add a Note" section above to add notes.`;
+      notesElm.innerHTML = `<h3>Nothing to show! Use "Add a Note" section above to add notes.</h3>`;
     }
+  }
+  function deleteNote(index){
+    
+    let notes = localStorage.getItem("notes");
+  if (notes == null) {
+    notesObj = [];
+  } else {
+    notesObj = JSON.parse(notes);
+  }
+
+  notesObj.splice(index, 1);
+  localStorage.setItem("notes", JSON.stringify(notesObj));
+  showNotes();
+    
   }
