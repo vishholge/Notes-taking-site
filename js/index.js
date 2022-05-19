@@ -1,9 +1,14 @@
 showNotes();
 
+// local storages store in key value onekey has many many values in form of array object.
+
 let addBtn = document.getElementById("addBtn");
 addBtn.addEventListener("click", function(e) {
   let addTxt = document.getElementById("addTxt");
   let notes = localStorage.getItem("notes");
+  // getItem will alwya return object in string that stirng array
+  // we will have convert it into object using parse
+  console.log(notes);
   if (notes == null) {
     notesObj = [];
   } else {
@@ -30,7 +35,7 @@ function showNotes() {
                       <div class="card-body">
                           <h5 class="card-title">Note ${index + 1}</h5>
                           <p class="card-text"> ${element}</p>
-                          <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary">Delete Note</button>
+                          <button id="${index}"onclick="deleteNote(this.id)" class="btn btn-primary bg-dark">Delete Note</button>
                       </div>
                   </div>`;
     });
@@ -51,6 +56,9 @@ function showNotes() {
   }
 
   notesObj.splice(index, 1);
+  // spice method is use delete or remove item form list or array
+  //first parameter is form where or which indeex have to remove and 
+  //second paramenter is no of item delete.
   localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
     
