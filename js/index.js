@@ -17,7 +17,7 @@ addBtn.addEventListener("click", function(e) {
   notesObj.push(addTxt.value);
   localStorage.setItem("notes", JSON.stringify(notesObj));
   addTxt.value = "";
-//   console.log(notesObj);
+
   showNotes();
 });
 // function to show notes from local storage:
@@ -62,4 +62,19 @@ function showNotes() {
   localStorage.setItem("notes", JSON.stringify(notesObj));
   showNotes();
     
+  }
+  const search = () =>  {
+      let searchText = document.getElementById("search-text").value;
+      let noteCard = document.getElementsByClassName("card-body");
+      console.log(noteCard);
+      // noteCard.forEach((element) => {
+      //   let cardText = element.getElementById("card-text").innerText;
+      //   console.log(cardText);
+
+      // })
+      for (let i = 0; i < noteCard.length; i++){
+         let cardText = noteCard[i].getElementsByTagName("p")[0].innerText;
+         console.log(cardText);
+      }
+
   }
