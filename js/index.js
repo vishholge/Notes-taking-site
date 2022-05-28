@@ -65,16 +65,18 @@ function showNotes() {
   }
   const search = () =>  {
       let searchText = document.getElementById("search-text").value;
-      let noteCard = document.getElementsByClassName("card-body");
-      console.log(noteCard);
-      // noteCard.forEach((element) => {
-      //   let cardText = element.getElementById("card-text").innerText;
-      //   console.log(cardText);
+      let noteCard = document.getElementsByClassName("noteCard");
+      
+      Array.from(noteCard).forEach(element => {
+        let cardText = element.getElementsByTagName("p")[0].innerText;
+        if(cardText.includes(searchText)){
+          element.style.display = "block";
+        }
+        else{
+          element.style.display = "none";
+        }
 
-      // })
-      for (let i = 0; i < noteCard.length; i++){
-         let cardText = noteCard[i].getElementsByTagName("p")[0].innerText;
-         console.log(cardText);
-      }
+      })
+      
 
   }
